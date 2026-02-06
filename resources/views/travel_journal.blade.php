@@ -1,0 +1,1 @@
+<h1>Code Dito sa resources/views/travel_journal.blade.php </h1>

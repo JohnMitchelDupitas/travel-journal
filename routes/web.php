@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\TripController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TripController;
+
 
 // Main Routes
 Route::get('/', [TripController::class, 'dashboard'])->name('dashboard'); // Dashboard/Overview

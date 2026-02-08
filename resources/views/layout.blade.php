@@ -141,7 +141,7 @@
     <aside class="w-20 md:w-64 flex flex-col justify-between flex-shrink-0 transition-all duration-300" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-right: 1px solid rgba(232,226,219,0.9); box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;">
         <div>
             <div class="h-20 flex items-center justify-center md:justify-start md:px-6" style="border-bottom: 1px solid rgba(232,226,219,0.8);">
-                <span class="text-3xl transform transition-transform hover:scale-110 duration-300" style="filter: grayscale(0.2);">✈️</span>
+                <span class="text-3xl transform transition-transform hover:scale-110 duration-300" style="filter: grayscale(0.2);"></span>
                 <span class="hidden md:block ml-3 font-semibold text-xl tracking-tight" style="font-family: 'Cormorant Garamond', serif; background: linear-gradient(135deg, #B85C38, #4A7C59); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">TravelLog</span>
             </div>
 
@@ -154,7 +154,7 @@
 
                 <a href="{{ url('/map') }}" class="nav-item group flex items-center px-4 md:px-4 py-3 rounded-lg {{ request()->is('map') ? 'active' : '' }}">
                     <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.447-.894L15 7m0 13V7"/></svg>
-                    <span class="hidden md:block ml-3 font-medium text-sm">World Map</span>
+                    <span class="hidden md:block ml-3 font-medium text-sm">Map</span>
                 </a>
 
                 <a href="{{ url('/gallery') }}" class="nav-item group flex items-center px-4 md:px-4 py-3 rounded-lg {{ request()->is('gallery') ? 'active' : '' }}">
@@ -170,13 +170,7 @@
             </nav>
         </div>
 
-        <div class="p-4 md:p-6 flex items-center gap-3" style="border-top: 1px solid rgba(232,226,219,0.8);">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0" style="background: linear-gradient(135deg, #B85C38, #9A4A2E); box-shadow: 0 2px 8px rgba(184,92,56,0.3);">U</div>
-            <div class="hidden md:block min-w-0">
-                <p class="text-sm font-semibold truncate" style="color: var(--tl-charcoal);">Profile</p>
-                <p class="text-xs truncate" style="color: var(--tl-warm-gray);">My Account</p>
-            </div>
-        </div>
+      
     </aside>
 
     <main class="flex-1 overflow-y-auto relative">

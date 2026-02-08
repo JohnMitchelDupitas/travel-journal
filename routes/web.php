@@ -17,3 +17,4 @@ Route::delete('/trip/{id}', [TripController::class, 'destroy'])->name('trip.dest
 // Bucket List CRUD Routes
 Route::post('/bucket', [TripController::class, 'storeBucket'])->name('bucket.store');
 Route::delete('/bucket/{id}', [TripController::class, 'destroyBucket'])->name('bucket.destroy');
+

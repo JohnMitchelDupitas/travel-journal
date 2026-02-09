@@ -1,5 +1,26 @@
 @extends('layout')
 
+<style>
+    /* Dark mode variables */
+    .dark {
+        --tl-cream: #1a1a1a;
+        --tl-parchment: #2a2a2a;
+        --tl-stone: #3a3a3a;
+        --tl-warm-gray: #b0b0b0;
+        --tl-charcoal: #e0e0e0;
+        --tl-terracotta: #D4856A;
+        --tl-terracotta-light: #B85C38;
+        --tl-sage: #6B9B6F;
+        --tl-sage-light: #4A7C59;
+        --tl-amber: #E5C457;
+        --tl-amber-light: #C9A227;
+        --tl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+        --tl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+        --tl-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+        --tl-shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
 @section('content')
 <div class="flex-1 overflow-y-auto">
     <div class="p-6 md:p-10 max-w-7xl mx-auto animate-fade">

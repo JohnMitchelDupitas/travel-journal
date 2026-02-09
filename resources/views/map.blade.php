@@ -26,6 +26,25 @@
             --tl-shadow-hover: 0 20px 50px rgba(45, 42, 40, 0.1), 0 8px 20px rgba(45, 42, 40, 0.06);
         }
 
+        /* Dark mode variables */
+        .dark {
+            --tl-cream: #1a1a1a;
+            --tl-parchment: #2a2a2a;
+            --tl-stone: #3a3a3a;
+            --tl-warm-gray: #b0b0b0;
+            --tl-charcoal: #e0e0e0;
+            --tl-terracotta: #D4856A;
+            --tl-terracotta-light: #B85C38;
+            --tl-sage: #6B9B6F;
+            --tl-sage-light: #4A7C59;
+            --tl-amber: #E5C457;
+            --tl-amber-light: #C9A227;
+            --tl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --tl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+            --tl-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+            --tl-shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
         
         * { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
         body {
@@ -171,11 +190,20 @@
             </nav>
         </div>
 
-        <div class="p-4 md:p-6 flex items-center gap-3" style="border-top: 1px solid rgba(232,226,219,0.8);">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0" style="background: linear-gradient(135deg, #B85C38, #9A4A2E); box-shadow: 0 2px 8px rgba(184,92,56,0.3);">U</div>
-            <div class="hidden md:block min-w-0">
-                <p class="text-sm font-semibold truncate" style="color: var(--tl-charcoal);">Profile</p>
-                <p class="text-xs truncate" style="color: var(--tl-warm-gray);">My Account</p>
+        <div class="p-4 md:p-6 flex flex-col gap-3" style="border-top: 1px solid rgba(232,226,219,0.8);">
+            <!-- Dark Mode Toggle -->
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-medium" style="color: var(--tl-warm-gray);">Dark Mode</span>
+                <button id="darkModeToggle" class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-terracotta" style="background: var(--tl-stone);">
+                    <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform" style="transform: translateX(1px);"></span>
+                </button>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0" style="background: linear-gradient(135deg, #B85C38, #9A4A2E); box-shadow: 0 2px 8px rgba(184,92,56,0.3);">U</div>
+                <div class="hidden md:block min-w-0">
+                    <p class="text-sm font-semibold truncate" style="color: var(--tl-charcoal);">Profile</p>
+                    <p class="text-xs truncate" style="color: var(--tl-warm-gray);">My Account</p>
+                </div>
             </div>
         </div>
     </aside>
@@ -348,8 +376,36 @@
             duration: 1.5,
             easeLinearity: 0.25
         });
-        
+
     }
+
+    // Dark Mode Toggle Functionality
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        html.classList.add('dark');
+        darkModeToggle.querySelector('span').style.transform = 'translateX(21px)';
+        darkModeToggle.style.background = 'var(--tl-terracotta)';
+    }
+
+    // Toggle dark mode
+    darkModeToggle.addEventListener('click', () => {
+        const isDark = html.classList.toggle('dark');
+        const toggleSpan = darkModeToggle.querySelector('span');
+
+        if (isDark) {
+            localStorage.setItem('theme', 'dark');
+            toggleSpan.style.transform = 'translateX(21px)';
+            darkModeToggle.style.background = 'var(--tl-terracotta)';
+        } else {
+            localStorage.setItem('theme', 'light');
+            toggleSpan.style.transform = 'translateX(1px)';
+            darkModeToggle.style.background = 'var(--tl-stone)';
+        }
+    });
 </script>
 </body>
 </html>

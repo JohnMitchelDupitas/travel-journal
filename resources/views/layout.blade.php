@@ -29,21 +29,21 @@
 
         /* Dark mode variables */
         .dark {
-            --tl-cream: #2a2a2a;
-            --tl-parchment: #3a3a3a;
-            --tl-stone: #4a4a4a;
-            --tl-warm-gray: #b0b0b0;
-            --tl-charcoal: #e0e0e0;
+            --tl-cream: #4a4a4a;
+            --tl-parchment: #5a5a5a;
+            --tl-stone: #6a6a6a;
+            --tl-warm-gray: #c0c0c0;
+            --tl-charcoal: #f0f0f0;
             --tl-terracotta: #D4856A;
             --tl-terracotta-light: #B85C38;
             --tl-sage: #6B9B6F;
             --tl-sage-light: #4A7C59;
             --tl-amber: #E5C457;
             --tl-amber-light: #C9A227;
-            --tl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-            --tl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
-            --tl-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
-            --tl-shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(0, 0, 0, 0.4);
+            --tl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --tl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+            --tl-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+            --tl-shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         * { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; }

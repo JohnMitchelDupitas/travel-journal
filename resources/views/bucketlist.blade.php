@@ -3,21 +3,21 @@
 <style>
     /* Dark mode variables */
     .dark {
-        --tl-cream: #f5f5f5;
-        --tl-parchment: #e8e8e8;
-        --tl-stone: #d3d3d3;
-        --tl-warm-gray: #666666;
-        --tl-charcoal: #333333;
+        --tl-cream: #4a4a4a;
+        --tl-parchment: #5a5a5a;
+        --tl-stone: #6a6a6a;
+        --tl-warm-gray: #c0c0c0;
+        --tl-charcoal: #f0f0f0;
         --tl-terracotta: #D4856A;
         --tl-terracotta-light: #B85C38;
         --tl-sage: #6B9B6F;
         --tl-sage-light: #4A7C59;
         --tl-amber: #E5C457;
         --tl-amber-light: #C9A227;
-        --tl-shadow-sm: 0 1px 2px rgba(51, 51, 51, 0.1);
-        --tl-shadow-md: 0 4px 12px rgba(51, 51, 51, 0.15), 0 2px 4px rgba(51, 51, 51, 0.1);
-        --tl-shadow-lg: 0 12px 40px rgba(51, 51, 51, 0.2), 0 4px 12px rgba(51, 51, 51, 0.1);
-        --tl-shadow-hover: 0 20px 50px rgba(51, 51, 51, 0.25), 0 8px 20px rgba(51, 51, 51, 0.15);
+        --tl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+        --tl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+        --tl-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+        --tl-shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 </style>
 

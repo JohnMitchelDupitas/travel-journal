@@ -3,7 +3,7 @@
 <style>
     /* Dark mode variables */
     .dark {
-        --tl-cream: #2a2a2a;
+        --tl-cream: #7c7b7b;
         --tl-parchment: #3a3a3a;
         --tl-stone: #4a4a4a;
         --tl-warm-gray: #b0b0b0;

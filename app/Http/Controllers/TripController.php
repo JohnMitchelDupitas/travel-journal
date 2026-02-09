@@ -108,4 +108,17 @@ class TripController extends Controller
         BucketList::destroy($id);
         return back()->with('success', 'Removed from bucket list!');
     }
+    public function updateBucket(Request $request, $id)
+{
+    $request->validate([
+        'destination' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'priority' => 'required|in:low,medium,high'
+    ]);
+
+    $bucket = BucketList::findOrFail($id);
+    $bucket->update($request->all());
+
+    return back()->with('success', 'Bucket updated!');
+}
 }

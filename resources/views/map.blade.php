@@ -26,6 +26,7 @@
             --tl-shadow-hover: 0 20px 50px rgba(45, 42, 40, 0.1), 0 8px 20px rgba(45, 42, 40, 0.06);
         }
 
+        
         * { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
         body {
             background: var(--tl-cream);
@@ -75,6 +76,7 @@
             background: linear-gradient(180deg, var(--tl-terracotta), var(--tl-sage));
             border-radius: 3px 0 0 3px;
         }
+        
 
         /* Card system */
         .card-shadow { box-shadow: var(--tl-shadow-sm); }
@@ -346,6 +348,7 @@
             duration: 1.5,
             easeLinearity: 0.25
         });
+        
     }
 </script>
 </body>

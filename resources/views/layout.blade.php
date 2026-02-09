@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -127,6 +128,91 @@
         main .border-gray-100,
         main .border-gray-200 { border-color: rgba(232,226,219,0.9) !important; }
         main h1, main .text-4xl { font-family: 'Cormorant Garamond', Georgia, serif !important; color: var(--tl-charcoal) !important; letter-spacing: -0.02em; }
+
+        /* Infinite scrolling footer styles */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .scroll-container {
+            overflow: hidden;
+            background: transparent;
+            border-top: 2px solid rgba(184, 92, 56, 0.3);
+            position: relative;
+            height: 3.5rem;
+        }
+
+        .scroll-container::before,
+        .scroll-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 10%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .scroll-container::before {
+            left: 0;
+            background: linear-gradient(to right, transparent, transparent);
+        }
+
+        .scroll-container::after {
+            right: 0;
+            background: linear-gradient(to left, transparent, transparent);
+        }
+
+        .scroll-content {
+            display: flex;
+            gap: 2rem;
+            animation: scroll-left 90s linear infinite;
+            animation-delay: -25s;
+            white-space: nowrap;
+            padding: 0.5rem 0;
+        }
+
+        .member-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(184, 92, 56, 0.1), rgba(212, 133, 106, 0.1));
+            border-radius: 50px;
+            border: 1px solid rgba(184, 92, 56, 0.2);
+            color: rgba(45, 42, 40, 0.95);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .member-item:hover {
+            background: linear-gradient(135deg, rgba(184, 92, 56, 0.2), rgba(212, 133, 106, 0.2));
+            border-color: rgba(184, 92, 56, 0.4);
+            color: var(--tl-charcoal);
+            transform: translateY(-2px);
+        }
+
+        .member-icon {
+            font-size: 1.1rem;
+            color: var(--tl-terracotta);
+        }
+
+        .separator {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--tl-terracotta), var(--tl-sage));
+            display: inline-block;
+            opacity: 0.5;
+            flex-shrink: 0;
+        }
         main .text-gray-600 { color: var(--tl-warm-gray) !important; }
         main .text-gray-900 { color: var(--tl-charcoal) !important; }
         main a[href].text-blue-600 { color: var(--tl-terracotta) !important; }
@@ -155,12 +241,13 @@
         main button[type="submit"].gradient-primary:hover { box-shadow: 0 4px 20px rgba(184,92,56,0.35); }
     </style>
 </head>
-<body class="h-screen flex overflow-hidden text-[#2D2A28]" style="background: var(--tl-cream); background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(184,92,56,0.06), transparent), linear-gradient(180deg, var(--tl-cream) 0%, var(--tl-parchment) 100%);">
+<body class="h-screen flex flex-col overflow-hidden text-[#2D2A28]" style="background: var(--tl-cream); background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(184,92,56,0.06), transparent), linear-gradient(180deg, var(--tl-cream) 0%, var(--tl-parchment) 100%);">
 
-    <aside class="w-20 md:w-64 flex flex-col justify-between flex-shrink-0 transition-all duration-300" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-right: 1px solid rgba(232,226,219,0.9); box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;">
+    <div class="flex flex-1 overflow-hidden">
+        <aside class="w-20 md:w-64 flex flex-col justify-between flex-shrink-0 transition-all duration-300" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-right: 1px solid rgba(232,226,219,0.9); box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;">
         <div>
             <div class="h-20 flex items-center justify-center md:justify-start md:px-6" style="border-bottom: 1px solid rgba(232,226,219,0.8);">
-                <span class="text-3xl transform transition-transform hover:scale-110 duration-300" style="filter: grayscale(0.2);">✈️</span>
+                <span class="text-3xl transform transition-transform hover:scale-110 duration-300" style="filter: grayscale(0.2);"></span>
                 <span class="hidden md:block ml-3 font-semibold text-xl tracking-tight" style="font-family: 'Cormorant Garamond', serif; background: linear-gradient(135deg, #B85C38, #4A7C59); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">TravelLog</span>
             </div>
 
@@ -168,12 +255,12 @@
                 
                 <a href="{{ url('/') }}" class="nav-item group flex items-center px-4 md:px-4 py-3 rounded-lg {{ request()->is('/') ? 'active' : '' }}">
                     <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 11l4-4m0 0l4 4m-4-4v4"/></svg>
-                    <span class="hidden md:block ml-3 font-medium text-sm">Overview</span>
+                    <span class="hidden md:block ml-3 font-medium text-sm">Dashboard</span>
                 </a>
 
                 <a href="{{ url('/map') }}" class="nav-item group flex items-center px-4 md:px-4 py-3 rounded-lg {{ request()->is('map') ? 'active' : '' }}">
                     <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.447-.894L15 7m0 13V7"/></svg>
-                    <span class="hidden md:block ml-3 font-medium text-sm">World Map</span>
+                    <span class="hidden md:block ml-3 font-medium text-sm">Map</span>
                 </a>
 
                 <a href="{{ url('/gallery') }}" class="nav-item group flex items-center px-4 md:px-4 py-3 rounded-lg {{ request()->is('gallery') ? 'active' : '' }}">
@@ -197,19 +284,84 @@
                     <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform" style="transform: translateX(1px);"></span>
                 </button>
             </div>
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0" style="background: linear-gradient(135deg, #B85C38, #9A4A2E); box-shadow: 0 2px 8px rgba(184,92,56,0.3);">U</div>
-                <div class="hidden md:block min-w-0">
-                    <p class="text-sm font-semibold truncate" style="color: var(--tl-charcoal);">Profile</p>
-                    <p class="text-xs truncate" style="color: var(--tl-warm-gray);">My Account</p>
-                </div>
-            </div>
+           
         </div>
     </aside>
 
-    <main class="flex-1 overflow-y-auto relative">
-        @yield('content')
+    <main class="flex-1 overflow-y-auto relative flex flex-col">
+        <div class="flex-1">
+            @yield('content')
+        </div>
+
+        <!-- Infinite Scrolling Footer -->
+        <div class="scroll-container flex items-center flex-shrink-0">
+            <div class="scroll-content">
+                <!-- Team Members - Listed twice for seamless infinite loop -->
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Balisacan, Mark Justin F.</span>
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Dupitas, John Mitchel M.</span>
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Idmilao, Liyanne A.</span>
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                      <span>Lazaro, Lance Philip G.</span>
+                 
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                     <span>Miguel, Michael Angelo</span>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Duplicate for seamless loop -->
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Balisacan, Mark Justin F.</span>
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Dupitas, John Mitchel M.</span>
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Idmilao, Liyanne A.</span>
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Lazaro, Lance Philip G.</span>
+                    
+                </div>
+                <div class="separator"></div>
+                
+                <div class="member-item">
+                    <i class="fas fa-user-circle member-icon"></i>
+                    <span>Miguel, Michael Angelo</span>
+                </div>
+            </div>
+        </div>
     </main>
+    </div>
 
     @yield('scripts')
 

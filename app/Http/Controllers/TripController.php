@@ -13,7 +13,8 @@ class TripController extends Controller
     {
         // Get trips sorted by newest date first
         $trips = Trip::orderBy('date', 'desc')->get();
-        return view('travel_journal', compact('trips'));
+        $buckets = BucketList::orderBy('priority', 'desc')->orderBy('created_at', 'desc')->get();
+        return view('travel_journal', compact('trips', 'buckets'));
     }
 
     public function store(Request $request)
@@ -76,7 +77,8 @@ class TripController extends Controller
     public function dashboard()
     {
         $trips = Trip::orderBy('date', 'desc')->get();
-        return view('dashboard', compact('trips'));
+        $buckets = BucketList::all();
+        return view('dashboard', compact('trips', 'buckets'));
     }
 
     public function gallery()
@@ -96,7 +98,9 @@ class TripController extends Controller
         $request->validate([
             'destination' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'priority' => 'required|in:low,medium,high'
+            'priority' => 'required|in:low,medium,high',
+            'latitude' => 'nullable|numeric|between:-90,90',
+            'longitude' => 'nullable|numeric|between:-180,180'
         ]);
 
         BucketList::create($request->all());
@@ -109,16 +113,18 @@ class TripController extends Controller
         return back()->with('success', 'Removed from bucket list!');
     }
     public function updateBucket(Request $request, $id)
-{
-    $request->validate([
-        'destination' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'priority' => 'required|in:low,medium,high'
-    ]);
+    {
+        $request->validate([
+            'destination' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'priority' => 'required|in:low,medium,high',
+            'latitude' => 'nullable|numeric|between:-90,90',
+            'longitude' => 'nullable|numeric|between:-180,180'
+        ]);
 
-    $bucket = BucketList::findOrFail($id);
-    $bucket->update($request->all());
+        $bucket = BucketList::findOrFail($id);
+        $bucket->update($request->all());
 
-    return back()->with('success', 'Bucket updated!');
-}
+        return back()->with('success', 'Bucket updated!');
+    }
 }

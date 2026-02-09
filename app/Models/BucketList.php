@@ -13,6 +13,8 @@ class BucketList extends Model
         'destination',
         'description',
         'priority',
+        'latitude',
+        'longitude',
         'added_at'
     ];
 

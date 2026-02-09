@@ -36,7 +36,9 @@
                         <p class="text-gray-900 text-sm font-bold mb-1 uppercase tracking-tight">Total Trips</p>
                         <p class="text-4xl font-black text-gray-900">{{ $trips->count() }}</p>
                     </div>
-                    <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center text-white text-2xl">🗺️</div>
+                    <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
                 </div>
             </div>
 
@@ -47,7 +49,9 @@
                         <p class="text-4xl font-black text-gray-900">{{ $trips->count() > 0 ? number_format($trips->avg('rating'), 1) : '0' }}</p>
                         <p class="text-xs text-yellow-500 mt-1">{{ $trips->count() > 0 ? str_repeat('★', round($trips->avg('rating'))) : 'No trips' }}</p>
                     </div>
-                    <div class="w-16 h-16 gradient-success rounded-2xl flex items-center justify-center text-white text-2xl">⭐</div>
+                    <div class="w-16 h-16 gradient-success rounded-2xl flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-star text-2xl"></i>
+                    </div>
                 </div>
             </div>
 
@@ -57,7 +61,9 @@
                         <p class="text-gray-900 text-sm font-bold mb-1 uppercase tracking-tight">Unique Places</p>
                         <p class="text-4xl font-black text-gray-900">{{ $trips->pluck('destination')->unique()->count() }}</p>
                     </div>
-                    <div class="w-16 h-16 gradient-warning rounded-2xl flex items-center justify-center text-white text-2xl">📍</div>
+                    <div class="w-16 h-16 gradient-warning rounded-2xl flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-map-pin text-2xl"></i>
+                    </div>
                 </div>
             </div>
 
@@ -65,10 +71,12 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-900 text-sm font-bold mb-1 uppercase tracking-tight">To Visit</p>
-                        <p class="text-4xl font-black text-gray-900">--</p>
-                        <p class="text-xs text-gray-500 mt-1">Check bucket list</p>
+                        <p class="text-4xl font-black text-gray-900">{{ $buckets->count() }}</p>
+                        <p class="text-xs text-gray-500 mt-1">{{ $buckets->count() > 0 ? 'in bucket list' : 'Check bucket list' }}</p>
                     </div>
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl">✨</div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-list-check text-2xl"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,12 +118,14 @@
         </div>
         @else
         <div class="bg-white rounded-2xl border border-gray-100 py-16 text-center card-shadow">
-            <div class="mb-4 flex justify-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center text-4xl">🗺️</div>
+            <div class="mb-6 flex justify-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center">
+                    <i class="fas fa-globe text-5xl text-blue-600"></i>
+                </div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">No trips yet</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">No trips yet</h3>
             <p class="text-gray-600 mb-6">Start logging your travels to see them here</p>
-            <a href="{{ url('/map') }}" class="inline-block px-6 py-3 gradient-primary text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+            <a href="{{ url('/map') }}" class="inline-block px-8 py-3 gradient-primary text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 duration-200">
                 Add Your First Trip
             </a>
         </div>

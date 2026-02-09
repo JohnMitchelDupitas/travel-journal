@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('destination');
             $table->text('description')->nullable();
             $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
+            $table->decimal('latitude', 10, 8)->nullable(); // Precision for map pins
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamp('added_at')->useCurrent();
             $table->timestamps();
         });
